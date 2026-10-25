@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build output
+dist/
+build/
+out/
+.vite/
+frontend/dist/
+
+# Test / tool caches
+coverage/
+.vitest/
+__pycache__/
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+backend/storage/tmp/*
+!backend/storage/tmp/.gitkeep
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Environment overrides (example files stay tracked)
+.env.local
+.env.*.local

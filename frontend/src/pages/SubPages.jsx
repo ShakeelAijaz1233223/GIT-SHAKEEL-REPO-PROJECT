@@ -25,6 +25,8 @@ import { IdmDownloadStudio } from '../components/downloader/DownloadQueueDrawer'
 import { OnlineVideoPlayer } from '../components/player/OnlineVideoPlayer';
 import { useApp } from '../context/AppContext';
 import { UltraApi } from '../services/apiClient';
+import { AuroraBackground } from '../components/ui/AuroraBackground';
+import { GradientText } from '../components/ui/MotionKit';
 
 function PageShell({ title, highlight, subtitle, rightAction = null, children }) {
   return (
@@ -32,15 +34,20 @@ function PageShell({ title, highlight, subtitle, rightAction = null, children })
       <AnnouncementBar />
       <Navbar />
       <main className="flex-1 w-full">
-        <div className="w-full border-b border-slate-200 bg-gradient-to-r from-slate-50 via-blue-50/50 to-indigo-50/40 px-4 sm:px-8 xl:px-12 py-8">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div>
-              <h1 className="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="relative w-full overflow-hidden border-b border-slate-200/80 px-4 py-9 sm:px-6 xl:px-10">
+          <AuroraBackground variant="band" />
+          <div className="relative mx-auto flex w-full max-w-[1600px] flex-col justify-between gap-4 lg:flex-row lg:items-center">
+            <div className="min-w-0">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-white/80 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-indigo-700 shadow-sm backdrop-blur">
+                <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400" />
+                workspace
+              </span>
+              <h1 className="mt-2 font-display text-2xl font-black tracking-tight text-slate-900 sm:text-4xl">
                 {title}{' '}
-                {highlight && <span className="text-blue-600">{highlight}</span>}
+                {highlight && <GradientText>{highlight}</GradientText>}
               </h1>
               {subtitle && (
-                <p className="mt-1.5 text-xs sm:text-base text-slate-600 max-w-4xl">
+                <p className="mt-1.5 max-w-4xl text-xs text-slate-600 sm:text-base">
                   {subtitle}
                 </p>
               )}
@@ -49,7 +56,7 @@ function PageShell({ title, highlight, subtitle, rightAction = null, children })
           </div>
         </div>
 
-        <div className="w-full px-4 sm:px-8 xl:px-12 py-8">{children}</div>
+        <div className="mx-auto w-full max-w-[1600px] px-4 py-8 sm:px-6 xl:px-10">{children}</div>
       </main>
       <Footer />
     </div>

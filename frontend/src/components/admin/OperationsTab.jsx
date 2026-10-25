@@ -108,7 +108,7 @@ export function OperationsTab({
   if (subTab === 'platforms') {
     return (
       <div className="space-y-6">
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-4">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-4">
           <div className="flex items-center gap-2">
             <Layers size={18} className="text-sky-400" />
             <h3 className="text-sm font-extrabold text-white">
@@ -123,19 +123,19 @@ export function OperationsTab({
                 placeholder="Platform Name (e.g. PeerTube)"
                 value={platName}
                 onChange={(e) => setPlatName(e.target.value)}
-                className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs text-white"
+                className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs text-white"
               />
               <input
                 required
                 placeholder="Domain match (e.g. peertube.tv)"
                 value={platDomain}
                 onChange={(e) => setPlatDomain(e.target.value)}
-                className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs text-white"
+                className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs text-white"
               />
               <select
                 value={platCategory}
                 onChange={(e) => setPlatCategory(e.target.value)}
-                className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs text-white"
+                className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs text-white"
               >
                 <option value="social">Social Media</option>
                 <option value="video">Streaming & Movies</option>
@@ -145,7 +145,7 @@ export function OperationsTab({
                 type="color"
                 value={platColor}
                 onChange={(e) => setPlatColor(e.target.value)}
-                className="h-9 w-full rounded-xl bg-[#080C15] border border-slate-800 p-1"
+                className="h-9 w-full rounded-xl bg-[#080C15] border border-white/10 p-1"
               />
             </div>
 
@@ -154,13 +154,13 @@ export function OperationsTab({
               value={customSvg}
               onChange={(e) => setCustomSvg(e.target.value)}
               placeholder="Paste clean <svg>...</svg> icon markup"
-              className="w-full rounded-xl bg-[#080C15] border border-slate-800 p-3 text-xs font-mono text-white"
+              className="w-full rounded-xl bg-[#080C15] border border-white/10 p-3 text-xs font-mono text-white"
             />
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5 text-xs text-slate-300">
                 <span>Live Preview:</span>
-                <span className="h-10 w-10 rounded-xl bg-[#080C15] border border-slate-800 grid place-items-center">
+                <span className="h-10 w-10 rounded-xl bg-[#080C15] border border-white/10 grid place-items-center">
                   <PlatformIcon
                     platform={{ displayName: platName || 'New', accentColor: platColor, iconSvg: customSvg }}
                     size={22}
@@ -177,7 +177,7 @@ export function OperationsTab({
           </form>
         </div>
 
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
           <h3 className="text-sm font-extrabold text-white mb-3">
             Active SQL Extractor Directory ({platforms.length})
           </h3>
@@ -185,12 +185,12 @@ export function OperationsTab({
             {platforms.map((p) => (
               <div
                 key={p.id}
-                className="rounded-xl bg-[#080C15] border border-slate-800 p-3 flex items-center gap-2.5"
+                className="rounded-xl bg-[#080C15] border border-white/10 p-3 flex items-center gap-2.5"
               >
                 <PlatformIcon platform={p} size={22} />
                 <div className="min-w-0">
                   <p className="text-xs font-bold text-white truncate">{p.displayName}</p>
-                  <p className="text-[11px] text-slate-400 truncate">{p.category}</p>
+                  <p className="text-[11px] text-slate-300 truncate">{p.category}</p>
                 </div>
               </div>
             ))}
@@ -207,20 +207,20 @@ export function OperationsTab({
     const sponsorZone = adWaterfall.progress_modal_sponsor || {};
 
     return (
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-5">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-5">
         <div className="flex items-center gap-2">
           <Sliders size={18} className="text-emerald-400" />
           <div>
             <h3 className="text-sm font-extrabold text-white">
               4-Stage Smart Ad Waterfall & Cooldown Controller (SQL Persisted)
             </h3>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-300">
               All zones disabled cleanly by default — enter your real ad URLs and toggle ON anytime.
             </p>
           </div>
         </div>
 
-        <div className="rounded-xl bg-[#080C15] border border-slate-800 p-4 space-y-3">
+        <div className="rounded-xl bg-[#080C15] border border-white/10 p-4 space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-white">
               Zone 3: Download Click Smart Direct-Link Tab (1x Cooldown)
@@ -247,7 +247,7 @@ export function OperationsTab({
                 download_click_direct_tab: { ...directZone, directUrl: e.target.value },
               })
             }
-            className="w-full rounded-xl bg-[#0D1320] border border-slate-800 px-3.5 py-2 text-xs text-white"
+            className="w-full rounded-xl bg-white/[0.035] backdrop-blur-xl border border-white/10 px-3.5 py-2 text-xs text-white"
           />
 
           <div className="flex items-center justify-between gap-4">
@@ -286,7 +286,7 @@ export function OperationsTab({
           { key: 'player_preroll_vast', label: 'Zone 2: 5-Second Skippable Player Pre-Roll', data: prerollZone },
           { key: 'progress_modal_sponsor', label: 'Zone 4: Download Queue Sponsor Card', data: sponsorZone },
         ].map((z) => (
-          <div key={z.key} className="rounded-xl bg-[#080C15] border border-slate-800 p-4 space-y-3">
+          <div key={z.key} className="rounded-xl bg-[#080C15] border border-white/10 p-4 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-white">{z.label}</span>
               <input
@@ -312,7 +312,7 @@ export function OperationsTab({
                     [z.key]: { ...z.data, title: e.target.value, headline: e.target.value },
                   })
                 }
-                className="rounded-xl bg-[#0D1320] border border-slate-800 px-3 py-2 text-xs text-white"
+                className="rounded-xl bg-white/[0.035] backdrop-blur-xl border border-white/10 px-3 py-2 text-xs text-white"
               />
               <input
                 type="text"
@@ -324,12 +324,12 @@ export function OperationsTab({
                     [z.key]: { ...z.data, subtitle: e.target.value },
                   })
                 }
-                className="rounded-xl bg-[#0D1320] border border-slate-800 px-3 py-2 text-xs text-white"
+                className="rounded-xl bg-white/[0.035] backdrop-blur-xl border border-white/10 px-3 py-2 text-xs text-white"
               />
               <button
                 type="button"
                 onClick={() => handleSaveWaterfall(adWaterfall)}
-                className="rounded-xl bg-slate-800 hover:bg-slate-700 px-4 py-2 text-xs font-bold text-white"
+                className="rounded-xl bg-white/[0.06] hover:bg-slate-700 px-4 py-2 text-xs font-bold text-white"
               >
                 Save Zone
               </button>
@@ -343,14 +343,14 @@ export function OperationsTab({
   if (subTab === 'cookies') {
     return (
       <div className="space-y-6">
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-3">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-3">
           <div className="flex items-center gap-2">
             <KeyRound size={18} className="text-amber-300" />
             <div>
               <h3 className="text-sm font-extrabold text-white">
                 Encrypted Access Cookie Vault (AES-256-GCM)
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-300">
                 Encrypted in SQL at rest; automatically decrypted to temporary ephemeral RAM-file during live extraction.
               </p>
             </div>
@@ -361,7 +361,7 @@ export function OperationsTab({
               <select
                 value={cookiePlatform}
                 onChange={(e) => setCookiePlatform(e.target.value)}
-                className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs text-white"
+                className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs text-white"
               >
                 <option value="youtube">YouTube Age-Gated / Members</option>
                 <option value="instagram">Instagram Session</option>
@@ -374,7 +374,7 @@ export function OperationsTab({
                 placeholder="Profile Label (e.g. Main YouTube Session)"
                 value={cookieLabel}
                 onChange={(e) => setCookieLabel(e.target.value)}
-                className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs text-white"
+                className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs text-white"
               />
             </div>
 
@@ -384,7 +384,7 @@ export function OperationsTab({
               value={rawCookieTxt}
               onChange={(e) => setRawCookieTxt(e.target.value)}
               placeholder="# Netscape HTTP Cookie File..."
-              className="w-full rounded-xl bg-[#080C15] border border-slate-800 p-3 text-xs font-mono text-white"
+              className="w-full rounded-xl bg-[#080C15] border border-white/10 p-3 text-xs font-mono text-white"
             />
 
             <button
@@ -396,18 +396,18 @@ export function OperationsTab({
           </form>
         </div>
 
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
           <h3 className="text-sm font-extrabold text-white mb-3">
             Stored Encrypted Session Profiles ({cookieProfiles.length})
           </h3>
           {cookieProfiles.length === 0 ? (
-            <p className="text-xs text-slate-400 py-6 text-center">
+            <p className="text-xs text-slate-300 py-6 text-center">
               0 cookie profiles stored (`0` fake entries). Upload Netscape cookies.txt above when needed.
             </p>
           ) : (
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400">
+                <tr className="border-b border-white/10 text-slate-300">
                   <th className="py-2 pr-3">Platform</th>
                   <th className="py-2 px-3">Label</th>
                   <th className="py-2 px-3">Masked Preview</th>
@@ -415,7 +415,7 @@ export function OperationsTab({
                   <th className="py-2 pl-3">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/70">
+              <tbody className="divide-y divide-white/10/70">
                 {cookieProfiles.map((c) => (
                   <tr key={c.id}>
                     <td className="py-2.5 pr-3 font-bold text-white">{c.platformId}</td>
@@ -447,7 +447,7 @@ export function OperationsTab({
 
   if (subTab === 'security') {
     return (
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-3">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-3">
         <div className="flex items-center gap-2">
           <ShieldCheck size={18} className="text-emerald-400" />
           <h3 className="text-sm font-extrabold text-white">
@@ -457,23 +457,23 @@ export function OperationsTab({
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-800 text-slate-400">
+              <tr className="border-b border-white/10 text-slate-300">
                 <th className="py-2 pr-3">Timestamp</th>
                 <th className="py-2 px-3">Event Type</th>
                 <th className="py-2 px-3">Client IP</th>
                 <th className="py-2 pl-3">Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/70">
+            <tbody className="divide-y divide-white/10/70">
               {auditLogs.map((log) => (
                 <tr key={log.id}>
-                  <td className="py-2 pr-3 text-slate-400">{log.createdAt}</td>
+                  <td className="py-2 pr-3 text-slate-300">{log.createdAt}</td>
                   <td className="py-2 px-3">
                     <span className="rounded-full bg-blue-600/20 px-2.5 py-0.5 text-[10px] font-bold text-sky-300">
                       {log.action}
                     </span>
                   </td>
-                  <td className="py-2 px-3 font-mono text-slate-200">{log.ip}</td>
+                  <td className="py-2 px-3 font-mono text-slate-100">{log.ip}</td>
                   <td className="py-2 pl-3 text-slate-300">{log.detail}</td>
                 </tr>
               ))}
@@ -486,7 +486,7 @@ export function OperationsTab({
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-3">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-3">
         <div className="flex items-center gap-2">
           <Globe size={18} className="text-sky-400" />
           <h3 className="text-sm font-extrabold text-white">
@@ -499,19 +499,19 @@ export function OperationsTab({
             placeholder="Project Name (e.g. EduClips Hub)"
             value={siteName}
             onChange={(e) => setSiteName(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs text-white"
           />
           <input
             required
             placeholder="Domain (e.g. educlips.io)"
             value={siteDomain}
             onChange={(e) => setSiteDomain(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs text-white"
           />
           <select
             value={shieldMode}
             onChange={(e) => setShieldMode(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs text-white"
           >
             <option value="clean_mainstream">Clean Mainstream Mode</option>
             <option value="hybrid_all">All Supported Categories</option>
@@ -525,17 +525,17 @@ export function OperationsTab({
         </form>
       </div>
 
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
         <table className="w-full text-left text-xs">
           <thead>
-            <tr className="border-b border-slate-800 text-slate-400">
+            <tr className="border-b border-white/10 text-slate-300">
               <th className="py-2 pr-3">Website Project</th>
               <th className="py-2 px-3">Domain</th>
               <th className="py-2 px-3">Content Shield</th>
               <th className="py-2 pl-3">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/70">
+          <tbody className="divide-y divide-white/10/70">
             {websites.map((w) => (
               <tr key={w.id}>
                 <td className="py-2.5 pr-3 font-bold text-white">{w.name}</td>

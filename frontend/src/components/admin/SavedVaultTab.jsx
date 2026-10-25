@@ -56,13 +56,13 @@ export function SavedVaultTab({ items = [], onPlayVaultItem, onDeleteVaultItem, 
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-base sm:text-lg font-extrabold text-white flex items-center gap-2">
             <Database size={19} className="text-sky-400" />
             <span>Permanent SQL & Disk Video Vault ({items.length})</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-300 mt-0.5">
             ONLY videos explicitly approved via <strong className="text-emerald-400">[SAVE]</strong> appear here. Click{' '}
             <strong className="text-rose-400">Delete Forever</strong> anytime to remove from SQL & disk.
           </p>
@@ -70,13 +70,13 @@ export function SavedVaultTab({ items = [], onPlayVaultItem, onDeleteVaultItem, 
 
         <div className="flex flex-wrap items-center gap-2">
           <div className="relative">
-            <Search size={14} className="absolute left-3 top-2.5 text-slate-400" />
+            <Search size={14} className="absolute left-3 top-2.5 text-slate-300" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search saved vault..."
-              className="rounded-xl bg-[#080C15] border border-slate-700 pl-8 pr-3 py-1.5 text-xs text-white"
+              className="rounded-xl bg-[#080C15] border border-white/15 pl-8 pr-3 py-1.5 text-xs text-white"
             />
           </div>
 
@@ -88,7 +88,7 @@ export function SavedVaultTab({ items = [], onPlayVaultItem, onDeleteVaultItem, 
               className={`px-3 py-1.5 rounded-xl text-xs font-bold capitalize ${
                 filterMode === m
                   ? 'bg-blue-600 text-white'
-                  : 'bg-slate-900 border border-slate-800 text-slate-300'
+                  : 'bg-white/[0.045] border border-white/10 text-slate-300'
               }`}
             >
               {m}
@@ -98,10 +98,10 @@ export function SavedVaultTab({ items = [], onPlayVaultItem, onDeleteVaultItem, 
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-12 text-center">
-          <Database size={32} className="mx-auto text-slate-500 mb-2" />
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-12 text-center">
+          <Database size={32} className="mx-auto text-slate-400 mb-2" />
           <p className="text-sm font-extrabold text-white">0 Videos Saved in SQL Vault</p>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-300 mt-1">
             Click <strong className="text-emerald-400">[SAVE]</strong> on any live card in the Right-Side Notification Stream to archive it permanently here.
           </p>
         </div>
@@ -113,7 +113,7 @@ export function SavedVaultTab({ items = [], onPlayVaultItem, onDeleteVaultItem, 
             return (
               <div
                 key={vidId}
-                className="rounded-2xl bg-[#0D1320] border border-slate-800 overflow-hidden flex flex-col justify-between"
+                className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 overflow-hidden flex flex-col justify-between"
               >
                 <div>
                   <div className="relative aspect-video bg-slate-950 overflow-hidden">
@@ -129,7 +129,7 @@ export function SavedVaultTab({ items = [], onPlayVaultItem, onDeleteVaultItem, 
                       </div>
                     )}
                     <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
-                      <span className="rounded-full bg-slate-950/90 px-2.5 py-0.5 text-[10px] font-bold text-sky-300 border border-slate-800">
+                      <span className="rounded-full bg-slate-950/90 px-2.5 py-0.5 text-[10px] font-bold text-sky-300 border border-white/10">
                         {item.platformName} · {item.maxResolutionLabel || item.resolutionLabel || 'HD'}
                       </span>
                                           </div>
@@ -146,13 +146,13 @@ export function SavedVaultTab({ items = [], onPlayVaultItem, onDeleteVaultItem, 
 
                   <div className="p-4">
                     <h3 className="text-sm font-extrabold text-white line-clamp-2">{item.title}</h3>
-                    <p className="text-[11px] text-slate-400 mt-1">
+                    <p className="text-[11px] text-slate-300 mt-1">
                       Saved {new Date(item.savedAt).toLocaleString()} · {formatBytes(item.fileSizeBytes || item.sizeBytes)}
                     </p>
                   </div>
                 </div>
 
-                <div className="px-4 pb-4 pt-2 border-t border-slate-800 flex items-center justify-between gap-2">
+                <div className="px-4 pb-4 pt-2 border-t border-white/10 flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5">
                     <button
                       type="button"
@@ -167,7 +167,7 @@ export function SavedVaultTab({ items = [], onPlayVaultItem, onDeleteVaultItem, 
                         navigator.clipboard?.writeText(item.rawUrl || item.sourceUrl).catch(() => {});
                         showToast('Vault URL copied!', 'info');
                       }}
-                      className="inline-flex items-center gap-1 rounded-lg bg-slate-800 hover:bg-slate-700 px-2.5 py-1.5 text-xs font-bold text-slate-200"
+                      className="inline-flex items-center gap-1 rounded-lg bg-white/[0.06] hover:bg-slate-700 px-2.5 py-1.5 text-xs font-bold text-slate-100"
                     >
                       <Copy size={12} /> URL
                     </button>
