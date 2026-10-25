@@ -1,29 +1,82 @@
 import React from 'react';
-import { Sparkles, Download, ShieldCheck, Zap, Globe2, CheckCircle2, HelpCircle } from 'lucide-react';
+import {
+  Sparkles,
+  Download,
+  ShieldCheck,
+  Zap,
+  Globe2,
+  CheckCircle2,
+  HelpCircle,
+  ArrowRight,
+  Lock,
+  Infinity as InfinityIcon,
+} from 'lucide-react';
+import { AccordionItem } from '../ui/Primitives';
+import { AuroraBackground } from '../ui/AuroraBackground';
+import {
+  GradientText,
+  Reveal,
+  Stagger,
+  StaggerItem,
+  GlowCard,
+  CountUp,
+} from '../ui/MotionKit';
 
-// ============================================================================
-// PURPOSE + SEO/AEO SECTION
-// Tells a first-time visitor (and Google / AI answer engines) exactly what this
-// website is, who it is for, how it works and what it costs. Includes FAQPage
-// + SoftwareApplication structured data so the page can be quoted directly in
-// search results.
-// ============================================================================
+/* ============================================================================
+   PURPOSE + SEO/AEO SECTION (V12)
+   Tells a first-time visitor (and search / AI answer engines) what this site
+   is, who it is for, how it works and what it costs. Ships FAQPage +
+   SoftwareApplication structured data.
+   ========================================================================== */
 
 const STEPS = [
   {
     icon: Globe2,
-    title: '1 · Paste any link',
+    title: 'Paste any link',
     body: 'Copy the address of the video page — YouTube, Facebook, Instagram, TikTok, a TeraBox share, an online course lesson, or any other website.',
+    gradient: 'from-indigo-500 via-blue-500 to-cyan-400',
+    glow: 'rgba(79,70,229,0.2)',
   },
   {
     icon: Sparkles,
-    title: '2 · We find the real video file',
-    body: 'Our engine reads the page, follows embedded players and picks the actual media stream — not ads, not a placeholder image.',
+    title: 'We find the real video file',
+    body: 'The engine reads the page, follows embedded players and picks the actual media stream — not ads, not a placeholder image.',
+    gradient: 'from-fuchsia-500 via-pink-500 to-rose-400',
+    glow: 'rgba(217,70,239,0.2)',
   },
   {
     icon: Download,
-    title: '3 · Watch or download',
+    title: 'Watch or download',
     body: 'Preview it instantly in the browser, then download in the quality you choose. It saves like any normal file — no extra software required.',
+    gradient: 'from-emerald-500 via-teal-500 to-cyan-400',
+    glow: 'rgba(16,185,129,0.2)',
+  },
+];
+
+const TRUST = [
+  {
+    icon: ShieldCheck,
+    title: 'No fake progress',
+    body: 'Only a real “download started”, never a fake “completed”.',
+    gradient: 'from-emerald-500 to-teal-500',
+  },
+  {
+    icon: Zap,
+    title: 'Fast engine',
+    body: 'Direct CDN streams; most links resolve in under a second.',
+    gradient: 'from-blue-500 to-indigo-500',
+  },
+  {
+    icon: Download,
+    title: 'Real file formats',
+    body: 'MP4, MKV, WEBM, MP3, M4A and 175+ more extensions.',
+    gradient: 'from-fuchsia-500 to-violet-500',
+  },
+  {
+    icon: Lock,
+    title: 'Private by default',
+    body: 'Guest mode stores zero history. Your account history is yours only.',
+    gradient: 'from-amber-500 to-orange-500',
   },
 ];
 
@@ -56,74 +109,130 @@ const FAQS = [
 
 export function PurposeSeoSection() {
   return (
-    <section className="w-full bg-white border-t border-slate-200 py-14">
-      <div className="w-full px-4 sm:px-8 xl:px-12">
-        {/* What is this */}
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-200 px-3.5 py-1 text-xs font-bold text-blue-700">
-            <HelpCircle size={13} /> What is this website?
-          </span>
-          <h2 className="mt-3 font-display text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            One free tool to save any online video for offline watching
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
-            UltraDownloader is a <strong>free online video downloader</strong>. Its only purpose is simple:
-            you paste a video link, and you get that video as a normal file on your computer — in HD, with sound,
-            without ads in the middle and without installing anything. It works on phones, tablets and PCs,
-            in any modern browser, for students, teachers, creators and anyone who wants to keep a video they
-            are allowed to keep.
-          </p>
-        </div>
+    <section className="ud-section relative w-full border-t border-slate-200/80 py-16">
+      <AuroraBackground variant="soft" />
 
-        {/* How it works */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {STEPS.map((step) => (
-            <div
-              key={step.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/60 p-5 hover:border-blue-300 transition-colors"
-            >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white">
-                <step.icon size={19} />
-              </span>
-              <h3 className="mt-3 text-sm font-bold text-slate-900">{step.title}</h3>
-              <p className="mt-1.5 text-[13px] leading-relaxed text-slate-600">{step.body}</p>
+      <div className="relative mx-auto w-full max-w-[1600px] px-4 sm:px-6 xl:px-10">
+        {/* ---------------- what is this ---------------- */}
+        <div className="mx-auto max-w-4xl text-center">
+          <Reveal>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-white/85 px-3.5 py-1 text-[11px] font-black text-indigo-700 shadow-sm backdrop-blur">
+              <HelpCircle size={13} /> what is this website?
+            </span>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <h2 className="mt-3 font-display text-2xl font-black tracking-tight text-slate-900 sm:text-4xl">
+              One free tool to save any online video for{' '}
+              <GradientText>offline watching</GradientText>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+              UltraDownloader is a <strong className="text-slate-800">free online video downloader</strong>.
+              Its only purpose is simple: you paste a video link, and you get that video as a normal file
+              on your computer — in HD, with sound, without ads in the middle and without installing
+              anything. It works on phones, tablets and PCs, in any modern browser, for students,
+              teachers, creators and anyone who wants to keep a video they are allowed to keep.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.16}>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
+              {[
+                { label: 'platforms', value: 400, suffix: '+' },
+                { label: 'cost per download', value: 0, prefix: '$' },
+                { label: 'software to install', value: 0 },
+                { label: 'sign-up required', value: 0 },
+              ].map((chip) => (
+                <span
+                  key={chip.label}
+                  className="inline-flex items-baseline gap-1.5 rounded-2xl border border-white/70 bg-white/80 px-3.5 py-2 text-xs font-bold text-slate-600 shadow-[0_14px_34px_-28px_rgba(49,46,129,0.9)] backdrop-blur"
+                >
+                  <span className="text-sm font-black text-slate-900">
+                    <CountUp to={chip.value} prefix={chip.prefix || ''} suffix={chip.suffix || ''} />
+                  </span>
+                  {chip.label}
+                </span>
+              ))}
             </div>
-          ))}
+          </Reveal>
         </div>
 
-        {/* Why trust */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {[
-            { icon: ShieldCheck, title: 'No fake progress', body: 'Only a real “Download started”, never a fake “completed”.' },
-            { icon: Zap, title: 'Fast engine', body: 'Direct CDN streams; most links resolve in under a second.' },
-            { icon: Download, title: 'Real file formats', body: 'MP4, MKV, WEBM, MP3, M4A and 175+ more extensions.' },
-            { icon: CheckCircle2, title: 'Private by default', body: 'Guest mode stores zero history. Your account history is yours only.' },
-          ].map((item) => (
-            <div key={item.title} className="rounded-xl border border-slate-200 p-4">
-              <item.icon size={17} className="text-blue-600" />
-              <p className="mt-2 text-[13px] font-bold text-slate-800">{item.title}</p>
-              <p className="mt-1 text-[12px] text-slate-500 leading-relaxed">{item.body}</p>
-            </div>
-          ))}
-        </div>
+        {/* ---------------- how it works ---------------- */}
+        <Stagger className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+          {STEPS.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <StaggerItem key={step.title}>
+                <GlowCard glowColor={step.glow} className="h-full p-0">
+                  <div className="relative h-full p-6">
+                    <div className="flex items-center justify-between">
+                      <span
+                        className={`relative grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${step.gradient} text-white shadow-[0_18px_34px_-20px_rgba(49,46,129,0.95)]`}
+                      >
+                        <Icon size={21} />
+                      </span>
+                      <span className="font-display text-4xl font-black text-slate-100">
+                        0{index + 1}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 text-base font-black text-slate-900">{step.title}</h3>
+                    <p className="mt-1.5 text-[13px] leading-relaxed text-slate-600">{step.body}</p>
 
-        {/* FAQ (AEO) */}
-        <div className="mt-12 max-w-4xl mx-auto">
-          <h2 className="font-display text-xl sm:text-2xl font-extrabold text-slate-900 text-center">
-            Frequently asked questions
-          </h2>
-          <div className="mt-5 space-y-2.5">
-            {FAQS.map((faq) => (
-              <details
-                key={faq.q}
-                className="group rounded-xl border border-slate-200 bg-white px-4 py-3 open:border-blue-300 open:bg-blue-50/40"
-              >
-                <summary className="cursor-pointer list-none text-sm font-bold text-slate-800 flex items-center justify-between gap-3">
-                  {faq.q}
-                  <span className="text-blue-500 group-open:rotate-45 transition-transform text-lg leading-none">+</span>
-                </summary>
-                <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{faq.a}</p>
-              </details>
+                    <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-slate-100">
+                      <div
+                        className={`h-full rounded-full bg-gradient-to-r ${step.gradient}`}
+                        style={{ width: `${(index + 1) * 33.3}%` }}
+                      />
+                    </div>
+                  </div>
+                </GlowCard>
+              </StaggerItem>
+            );
+          })}
+        </Stagger>
+
+        {/* ---------------- trust row ---------------- */}
+        <Stagger className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {TRUST.map((item) => {
+            const Icon = item.icon;
+            return (
+              <StaggerItem key={item.title}>
+                <div className="group flex h-full items-start gap-3 rounded-2xl border border-slate-200 bg-white/85 p-4 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-lg">
+                  <span
+                    className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${item.gradient} text-white shadow-sm`}
+                  >
+                    <Icon size={17} />
+                  </span>
+                  <div>
+                    <p className="text-[13px] font-black text-slate-800">{item.title}</p>
+                    <p className="mt-0.5 text-[12px] leading-relaxed text-slate-500">{item.body}</p>
+                  </div>
+                </div>
+              </StaggerItem>
+            );
+          })}
+        </Stagger>
+
+        {/* ---------------- FAQ ---------------- */}
+        <div className="mx-auto mt-14 max-w-4xl">
+          <Reveal className="text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-fuchsia-200 bg-fuchsia-50 px-3.5 py-1 text-[11px] font-black text-fuchsia-700">
+              <Sparkles size={12} /> honest answers
+            </span>
+            <h2 className="mt-3 font-display text-2xl font-black text-slate-900 sm:text-3xl">
+              Frequently asked questions
+            </h2>
+            <p className="mx-auto mt-2 max-w-2xl text-sm text-slate-600">
+              Everything below is true of this build — no marketing numbers.
+            </p>
+          </Reveal>
+
+          <div className="mt-6 space-y-2.5">
+            {FAQS.map((faq, i) => (
+              <Reveal key={faq.q} delay={i * 0.03}>
+                <AccordionItem question={faq.q} answer={faq.a} defaultOpen={i === 0} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -144,7 +253,11 @@ export function PurposeSeoSection() {
                 description:
                   'Free online video downloader that accepts any video link from 400+ websites, finds the real media stream and downloads it in HD without installing software.',
                 offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-                aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '1280' },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.8',
+                  ratingCount: '1280',
+                },
               },
               {
                 '@type': 'FAQPage',

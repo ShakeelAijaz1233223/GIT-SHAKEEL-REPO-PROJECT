@@ -1,57 +1,22 @@
 import React, { useState } from 'react';
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, CheckCircle2, AlertTriangle, Info } from 'lucide-react';
+import { AuroraBackground } from './AuroraBackground';
 
-// Lightweight GPU-only pure-white ambient studio backdrop (ZERO scroll lag!)
+/* Legacy backdrop helper — now delegates to the V12 aurora engine. */
 export function AnimatedWhiteBackdrop() {
-  const reduce = useReducedMotion();
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-x-0 top-0 h-[560px] overflow-hidden -z-10 select-none"
-    >
-      <div
-        className="absolute inset-0 opacity-[0.35]"
-        style={{
-          backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-        }}
-      />
-      {!reduce && (
-        <>
-          <motion.div
-            animate={{ x: [0, 48, 0], y: [0, -24, 0] }}
-            transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
-            className="will-change-transform absolute -top-28 -left-20 h-96 w-96 rounded-full bg-blue-100/70 blur-3xl"
-          />
-          <motion.div
-            animate={{ x: [0, -52, 0], y: [0, 28, 0] }}
-            transition={{ duration: 19, repeat: Infinity, ease: 'easeInOut' }}
-            className="will-change-transform absolute -top-20 right-0 h-96 w-96 rounded-full bg-indigo-100/65 blur-3xl"
-          />
-          <motion.div
-            animate={{ x: [0, 32, 0], y: [0, 20, 0] }}
-            transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-            className="will-change-transform absolute top-32 left-1/3 h-72 w-72 rounded-full bg-sky-100/60 blur-3xl"
-          />
-        </>
-      )}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
-    </div>
-  );
+  return <AuroraBackground variant="hero" />;
 }
 
 export function MotionReveal({ children, delay = 0, className = '' }) {
   const shouldReduce = useReducedMotion();
-  if (shouldReduce) {
-    return <div className={className}>{children}</div>;
-  }
+  if (shouldReduce) return <div className={className}>{children}</div>;
   return (
     <motion.div
-      initial={{ opacity: 0, y: 14 }}
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.08 }}
-      transition={{ duration: 0.3, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
       className={`will-change-transform ${className}`}
     >
       {children}
@@ -62,22 +27,25 @@ export function MotionReveal({ children, delay = 0, className = '' }) {
 export function SectionHeading({ eyebrow, title, highlight, subtitle, align = 'left' }) {
   const center = align === 'center';
   return (
-    <div className={`mb-6 ${center ? 'text-center mx-auto max-w-4xl' : 'w-full'}`}>
+    <div className={`mb-7 ${center ? 'mx-auto max-w-4xl text-center' : 'w-full'}`}>
       {eyebrow && (
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-200 px-3.5 py-1 text-xs font-bold tracking-wide text-blue-700 mb-3">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-gradient-to-r from-indigo-50 to-cyan-50 px-3.5 py-1 text-[11px] font-black uppercase tracking-wider text-indigo-700 shadow-sm">
+          <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400" />
           {eyebrow}
         </span>
       )}
-      <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+      <h2 className="mt-3 font-display text-2xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
         {title}{' '}
         {highlight && (
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 bg-clip-text text-transparent">
-            {highlight}
-          </span>
+          <span className="ud-text-gradient">{highlight}</span>
         )}
       </h2>
       {subtitle && (
-        <p className={`mt-2 text-sm sm:text-base text-slate-600 leading-relaxed ${center ? 'mx-auto max-w-3xl' : 'max-w-4xl'}`}>
+        <p
+          className={`mt-2 text-sm leading-relaxed text-slate-600 sm:text-base ${
+            center ? 'mx-auto max-w-3xl' : 'max-w-4xl'
+          }`}
+        >
           {subtitle}
         </p>
       )}
@@ -88,18 +56,41 @@ export function SectionHeading({ eyebrow, title, highlight, subtitle, align = 'l
 export function AccordionItem({ question, answer, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+    <motion.div
+      whileHover={{ y: -1 }}
+      className={`overflow-hidden rounded-2xl border bg-white transition-colors ${
+        open
+          ? 'border-indigo-200 shadow-[0_18px_44px_-32px_rgba(49,46,129,0.9)]'
+          : 'border-slate-200 shadow-sm hover:border-indigo-200'
+      }`}
+    >
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left text-sm sm:text-base font-bold text-slate-900 hover:bg-slate-50 transition-colors"
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-extrabold text-slate-900 transition-colors hover:bg-slate-50/70 sm:text-base"
       >
-        <span>{question}</span>
-        <ChevronDown
-          size={18}
-          className={`shrink-0 text-blue-600 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-        />
+        <span className="flex items-start gap-2.5">
+          <span
+            className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-md text-[10px] font-black text-white ${
+              open
+                ? 'bg-gradient-to-br from-indigo-500 to-cyan-500'
+                : 'bg-gradient-to-br from-slate-300 to-slate-400'
+            }`}
+          >
+            ?
+          </span>
+          <span>{question}</span>
+        </span>
+        <span
+          className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
+            open
+              ? 'rotate-180 border-indigo-200 bg-indigo-50 text-indigo-600'
+              : 'border-slate-200 bg-slate-50 text-slate-500'
+          }`}
+        >
+          <ChevronDown size={15} />
+        </span>
       </button>
       <AnimatePresence initial={false}>
         {open && (
@@ -107,39 +98,56 @@ export function AccordionItem({ question, answer, defaultOpen = false }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="px-5 pb-4 pt-2 text-sm text-slate-600 border-t border-slate-100 leading-relaxed">
+            <div className="border-t border-slate-100 px-5 pb-4 pt-3 text-sm leading-relaxed text-slate-600">
               {answer}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
 export function ToastNotification({ toast }) {
-  if (!toast) return null;
-  const Icon =
-    toast.tone === 'error' ? AlertTriangle : toast.tone === 'success' ? CheckCircle2 : Info;
-  const ring =
-    toast.tone === 'error'
-      ? 'border-rose-300 bg-white text-rose-700 shadow-rose-100'
-      : toast.tone === 'success'
-      ? 'border-emerald-300 bg-white text-emerald-700 shadow-emerald-100'
-      : 'border-blue-300 bg-white text-blue-700 shadow-blue-100';
+  const tone =
+    toast?.tone === 'error' ? 'error' : toast?.tone === 'success' ? 'success' : 'info';
+  const Icon = tone === 'error' ? AlertTriangle : tone === 'success' ? CheckCircle2 : Info;
+  const theme =
+    tone === 'error'
+      ? { bar: 'from-rose-500 to-orange-500', ring: 'border-rose-200', text: 'text-rose-800' }
+      : tone === 'success'
+        ? { bar: 'from-emerald-500 to-teal-500', ring: 'border-emerald-200', text: 'text-emerald-800' }
+        : { bar: 'from-indigo-500 to-cyan-500', ring: 'border-indigo-200', text: 'text-indigo-800' };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      role="status"
-      aria-live="polite"
-      className={`fixed bottom-5 right-5 z-[95] flex items-center gap-2.5 rounded-xl border px-4 py-3 text-xs sm:text-sm font-semibold shadow-xl ${ring}`}
-    >
-      <Icon size={17} className="shrink-0" />
-      <span>{toast.message}</span>
-    </motion.div>
+    <AnimatePresence>
+      {toast && (
+        <motion.div
+          key={toast.id}
+          initial={{ opacity: 0, y: 18, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 12, scale: 0.97 }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          role="status"
+          aria-live="polite"
+          className={`fixed bottom-5 right-4 z-[95] flex max-w-[92vw] items-center gap-2.5 overflow-hidden rounded-2xl border bg-white/95 px-3 py-2.5 pl-2 shadow-[0_28px_60px_-30px_rgba(30,27,105,0.65)] backdrop-blur sm:right-6 ${theme.ring}`}
+        >
+          <span
+            className={`grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${theme.bar} text-white`}
+          >
+            <Icon size={16} />
+          </span>
+          <span className={`text-xs font-bold sm:text-[13px] ${theme.text}`}>{toast.message}</span>
+          <motion.span
+            initial={{ scaleX: 1 }}
+            animate={{ scaleX: 0 }}
+            transition={{ duration: 3.6, ease: 'linear' }}
+            className={`absolute inset-x-0 bottom-0 h-0.5 origin-left bg-gradient-to-r ${theme.bar}`}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

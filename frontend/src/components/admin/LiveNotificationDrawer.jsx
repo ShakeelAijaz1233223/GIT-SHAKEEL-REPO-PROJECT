@@ -33,9 +33,9 @@ export function LiveNotificationDrawer({
   return (
     <aside
       aria-label="Live Paste Notification Stream"
-      className="w-full xl:w-80 shrink-0 bg-[#090E1D] border-t xl:border-t-0 xl:border-l border-slate-800 flex flex-col max-h-screen"
+      className="w-full xl:w-80 shrink-0 bg-[#090E1D] border-t xl:border-t-0 xl:border-l border-white/10 flex flex-col max-h-screen"
     >
-      <div className="p-4 border-b border-slate-800 space-y-2.5">
+      <div className="p-4 border-b border-white/10 space-y-2.5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -56,8 +56,8 @@ export function LiveNotificationDrawer({
           )}
         </div>
 
-        <p className="text-[11px] text-slate-400 leading-relaxed">
-          <strong className="text-slate-200">Zero-Auto-DB Rule:</strong> Pasted links stay strictly in Volatile RAM until you click{' '}
+        <p className="text-[11px] text-slate-300 leading-relaxed">
+          <strong className="text-slate-100">Zero-Auto-DB Rule:</strong> Pasted links stay strictly in Volatile RAM until you click{' '}
           <strong className="text-emerald-400">SAVE</strong>.
         </p>
 
@@ -67,7 +67,7 @@ export function LiveNotificationDrawer({
             value={livePasteUrl}
             onChange={(e) => setLivePasteUrl(e.target.value)}
             placeholder="Paste real https:// video URL..."
-            className="flex-1 rounded-lg bg-[#050914] border border-slate-800 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-400"
+            className="flex-1 rounded-lg bg-[#050914] border border-white/10 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-400"
           />
           <button
             type="submit"
@@ -81,9 +81,9 @@ export function LiveNotificationDrawer({
       <div className="p-3 space-y-3 overflow-y-auto flex-1">
         {liveCards.length === 0 ? (
           <div className="py-12 px-4 text-center space-y-2">
-            <Radio size={28} className="mx-auto text-slate-600" />
+            <Radio size={28} className="mx-auto text-slate-500" />
             <p className="text-xs font-bold text-slate-300">Waiting for Live Pasted URLs</p>
-            <p className="text-[11px] text-slate-500 leading-relaxed">
+            <p className="text-[11px] text-slate-400 leading-relaxed">
               Paste any real URL on the public home page or above to stream its live video card here in real time.
             </p>
           </div>
@@ -91,7 +91,7 @@ export function LiveNotificationDrawer({
           liveCards.map((card) => (
             <article
               key={card.cardId}
-              className="rounded-xl bg-[#0D1322] border border-slate-800 overflow-hidden shadow-md"
+              className="rounded-xl bg-[#0D1322] border border-white/10 overflow-hidden shadow-md"
             >
               <div
                 onClick={() => onViewCard(card)}
@@ -115,7 +115,7 @@ export function LiveNotificationDrawer({
               <div className="p-3 space-y-2.5">
                 <p className="text-xs font-bold text-white line-clamp-2">{card.title}</p>
 
-                <div className="flex justify-between text-[11px] text-slate-400">
+                <div className="flex justify-between text-[11px] text-slate-300">
                   <span>{formatBytes(card.estimatedSizeBytes)}</span>
                   <span className="text-amber-300 font-semibold">RAM Only · Not Saved</span>
                 </div>

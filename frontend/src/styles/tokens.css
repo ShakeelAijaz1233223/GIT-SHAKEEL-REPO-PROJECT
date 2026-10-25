@@ -1,12 +1,93 @@
+/* ============================================================================
+   UltraDownloader V12 · "AURORA CHROMA" DESIGN TOKENS
+   Bright, colourful, motion-first. Public = light aurora. Admin = deep space.
+   ========================================================================== */
+
 :root {
+  /* ---------- Legacy aliases (kept so every old component still works) ---------- */
   --bg-page: #ffffff;
-  --bg-subtle: #f8fafc;
+  --bg-subtle: #f7f9ff;
   --bg-card: #ffffff;
-  --border-light: #e2e8f0;
-  --border-hover: #93c5fd;
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
-  --brand-primary: #2563eb;
-  --brand-hover: #1d4ed8;
+  --border-light: #e6e9f7;
+  --border-hover: #a5b4fc;
+  --text-primary: #0b1020;
+  --text-secondary: #3c4665;
+  --text-muted: #6b7694;
+  --brand-primary: #4f46e5;
+  --brand-hover: #4338ca;
+
+  /* ---------- Brand spectrum ---------- */
+  --brand-500: #4f46e5;
+  --brand-600: #4338ca;
+  --brand-tint: #eef2ff;
+  --blue-500: #2563eb;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --violet-500: #8b5cf6;
+  --fuchsia-500: #d946ef;
+  --pink-500: #ec4899;
+  --rose-500: #f43f5e;
+  --amber-500: #f59e0b;
+  --orange-500: #fb7185;
+  --emerald-500: #10b981;
+  --teal-500: #14b8a6;
+
+  /* ---------- Ink ---------- */
+  --ink: #0b1020;
+  --ink-soft: #3c4665;
+  --ink-mute: #6b7694;
+  --ink-faint: #98a2b8;
+  --line: #e7eaf7;
+  --line-strong: #cfd7ee;
+
+  /* ---------- Surfaces ---------- */
+  --bg: #ffffff;
+  --bg-soft: #f7f9ff;
+  --bg-tint: #f3f6ff;
+
+  /* ---------- Semantic ---------- */
+  --ok: #059669;
+  --ok-tint: #ecfdf5;
+  --warn: #b45309;
+  --warn-tint: #fffbeb;
+  --danger: #e11d48;
+  --danger-tint: #fff1f4;
+  --info: #2563eb;
+  --info-tint: #eff6ff;
+
+  /* ---------- Radii / shadows ---------- */
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r: 16px;
+  --r-lg: 22px;
+  --r-xl: 30px;
+
+  --shadow-xs: 0 1px 2px rgba(11, 16, 32, 0.05);
+  --shadow-sm: 0 2px 8px -2px rgba(11, 16, 32, 0.08);
+  --shadow-md: 0 14px 34px -18px rgba(37, 41, 90, 0.28);
+  --shadow-lg: 0 30px 70px -34px rgba(30, 27, 105, 0.35);
+  --shadow-glow: 0 18px 45px -18px rgba(79, 70, 229, 0.55);
+
+  /* ---------- Gradients ---------- */
+  --grad-brand: linear-gradient(120deg, #4f46e5 0%, #2563eb 34%, #06b6d4 68%, #8b5cf6 100%);
+  --grad-brand-soft: linear-gradient(120deg, #eef2ff 0%, #ecfeff 50%, #f5f3ff 100%);
+  --grad-sunrise: linear-gradient(120deg, #f59e0b 0%, #f43f5e 55%, #8b5cf6 100%);
+  --grad-mint: linear-gradient(120deg, #10b981 0%, #06b6d4 60%, #2563eb 100%);
+  --grad-candy: linear-gradient(120deg, #ec4899 0%, #8b5cf6 55%, #22d3ee 100%);
+  --grad-night: linear-gradient(160deg, #070b18 0%, #0b1226 45%, #131a35 100%);
+  --grad-glass: linear-gradient(150deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.62));
+
+  /* ---------- Admin (deep space) ---------- */
+  --adm-bg: #05070f;
+  --adm-panel: rgba(15, 20, 38, 0.72);
+  --adm-line: rgba(120, 138, 200, 0.16);
+  --adm-line-strong: rgba(140, 160, 255, 0.32);
+  --adm-ink: #e8ecfb;
+  --adm-mute: #93a0c4;
+  --adm-glow: 0 0 0 1px rgba(120, 150, 255, 0.18), 0 22px 60px -30px rgba(56, 130, 255, 0.65);
+}
+
+/* Dark admin scope ---------------------------------------------------------- */
+[data-scope='admin'] {
+  color-scheme: dark;
 }

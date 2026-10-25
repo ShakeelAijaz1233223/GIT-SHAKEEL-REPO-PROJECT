@@ -1,3 +1,9 @@
+/* ============================================================================
+   UltraDownloader V12 · MOTION LIBRARY
+   All animations are transform / opacity / filter only (GPU friendly).
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- keyframes */
 @keyframes udLivePulse {
   0%,
   100% {
@@ -5,12 +11,435 @@
     opacity: 1;
   }
   50% {
-    transform: scale(1.25);
-    opacity: 0.65;
+    transform: scale(1.35);
+    opacity: 0.55;
   }
 }
 
+@keyframes udBlobDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(6%, -7%, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-5%, 5%, 0) scale(0.95);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes udBlobDriftAlt {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-8%, 6%, 0) scale(1.12) rotate(8deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg);
+  }
+}
+
+@keyframes udGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes udShimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+@keyframes udFloatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes udFloatYSlow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(3deg);
+  }
+}
+
+@keyframes udSpinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes udRingPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes udMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes udGridPan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 64px 64px;
+  }
+}
+
+@keyframes udSheen {
+  0% {
+    opacity: 0;
+    transform: translateX(-140%) skewX(-18deg);
+  }
+  35% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(240%) skewX(-18deg);
+  }
+}
+
+@keyframes udDashFlow {
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
+@keyframes udPop {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes udHaloBreath {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes udTextGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(99, 102, 241, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(99, 102, 241, 0.35));
+  }
+}
+
+/* ---------------------------------------------------------------- utilities */
 .ud-live-dot {
   animation: udLivePulse 2s ease-in-out infinite;
   will-change: transform, opacity;
+}
+
+.ud-aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  will-change: transform;
+  pointer-events: none;
+}
+.ud-blob-a {
+  animation: udBlobDrift 22s ease-in-out infinite;
+}
+.ud-blob-b {
+  animation: udBlobDriftAlt 27s ease-in-out infinite;
+}
+.ud-blob-c {
+  animation: udBlobDrift 33s ease-in-out infinite reverse;
+}
+
+.ud-grid-overlay {
+  background-image: linear-gradient(to right, rgba(99, 102, 241, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.09) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: udGridPan 26s linear infinite;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, black 20%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, black 20%, transparent 78%);
+}
+
+.ud-dots-overlay {
+  background-image: radial-gradient(rgba(79, 70, 229, 0.22) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 10%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 10%, transparent 75%);
+}
+
+.ud-text-gradient {
+  background-image: var(--grad-brand);
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: udGradientShift 9s ease infinite;
+  will-change: background-position;
+}
+.ud-text-gradient-sunrise {
+  background-image: var(--grad-sunrise);
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: udGradientShift 11s ease infinite;
+}
+.ud-text-gradient-candy {
+  background-image: var(--grad-candy);
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: udGradientShift 10s ease infinite;
+}
+
+.ud-float {
+  animation: udFloatY 6s ease-in-out infinite;
+  will-change: transform;
+}
+.ud-float-slow {
+  animation: udFloatYSlow 9s ease-in-out infinite;
+  will-change: transform;
+}
+.ud-spin-slow {
+  animation: udSpinSlow 18s linear infinite;
+}
+
+/* Gradient ring that flows around a panel (registered custom property) */
+@property --ud-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes udAngleSpin {
+  to {
+    --ud-angle: 360deg;
+  }
+}
+
+.ud-glow-frame {
+  position: relative;
+  isolation: isolate;
+}
+.ud-glow-frame::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--ud-angle, 0deg),
+    #6366f1,
+    #22d3ee,
+    #a855f7,
+    #f472b6,
+    #f59e0b,
+    #6366f1
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0.8;
+  animation: udAngleSpin 9s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Sweeping sheen used on buttons / cards */
+.ud-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.ud-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: translateX(-140%) skewX(-18deg);
+  animation: udSheen 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+.ud-sheen-slow::after {
+  animation-duration: 7s;
+}
+
+.ud-pulse-ring {
+  position: relative;
+}
+.ud-pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid rgba(99, 102, 241, 0.55);
+  animation: udRingPulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+.ud-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: udMarquee 34s linear infinite;
+  will-change: transform;
+}
+.ud-marquee-track:hover {
+  animation-play-state: paused;
+}
+.ud-marquee-fast {
+  animation-duration: 22s;
+}
+
+.ud-halo-breath {
+  animation: udHaloBreath 6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.ud-text-glow {
+  animation: udTextGlow 6s ease-in-out infinite;
+}
+
+.ud-dash-flow {
+  stroke-dasharray: 6 8;
+  animation: udDashFlow 6s linear infinite;
+}
+
+.ud-pop {
+  animation: udPop 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Glass surfaces ----------------------------------------------------------- */
+.ud-glass {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.72));
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 24px 60px -30px rgba(30, 27, 105, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.ud-glass-dark {
+  background: linear-gradient(150deg, rgba(20, 26, 48, 0.82), rgba(10, 14, 30, 0.68));
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(130, 150, 255, 0.16);
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(160, 180, 255, 0.08);
+}
+
+.ud-scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.35) transparent;
+}
+.ud-scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.ud-scroll-thin::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 999px;
+}
+.ud-scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Accessibility: honour reduced motion everywhere */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Animated gradient backgrounds -------------------------------------------- */
+.ud-gradient-bg-anim {
+  background-image: linear-gradient(
+    110deg,
+    #4f46e5 0%,
+    #2563eb 22%,
+    #06b6d4 44%,
+    #8b5cf6 66%,
+    #ec4899 84%,
+    #4f46e5 100%
+  );
+  background-size: 260% 260%;
+  animation: udGradientShift 16s ease infinite;
+  will-change: background-position;
+}
+
+.ud-gradient-bg-admin {
+  background-image: linear-gradient(110deg, #1e1b4b 0%, #0e7490 35%, #4c1d95 70%, #1e1b4b 100%);
+  background-size: 240% 240%;
+  animation: udGradientShift 20s ease infinite;
+}
+
+/* Colourful top hairline used under sticky headers */
+.ud-top-hairline {
+  background: linear-gradient(90deg, #6366f1, #22d3ee, #a855f7, #f472b6, #f59e0b, #6366f1);
+  background-size: 200% 100%;
+  animation: udGradientShift 9s linear infinite;
+}
+
+/* Soft neon ring for admin cards */
+.ud-neon-ring {
+  box-shadow: 0 0 0 1px rgba(120, 150, 255, 0.16), 0 24px 60px -34px rgba(60, 120, 255, 0.55);
 }

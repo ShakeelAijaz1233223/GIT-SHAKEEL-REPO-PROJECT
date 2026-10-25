@@ -8,6 +8,7 @@ import { OnlineVideoPlayer } from '../components/player/OnlineVideoPlayer';
 import { NativeSponsorBanner } from '../components/monetization/AdWaterfallManager';
 import { UltraApi } from '../services/apiClient';
 import { useApp } from '../context/AppContext';
+import { AuroraBackground } from '../components/ui/AuroraBackground';
 
 export function ViralSharePage() {
   const { shortCode } = useParams();
@@ -29,19 +30,21 @@ export function ViralSharePage() {
     <div className="min-h-screen w-full bg-white text-slate-900 flex flex-col">
       <AnnouncementBar />
       <Navbar />
-      <main className="flex-1 w-full px-4 sm:px-8 xl:px-12 py-10">
+      <main className="relative flex-1 w-full px-4 sm:px-6 xl:px-10 py-10">
+        <AuroraBackground variant="soft" />
+        <div className="relative mx-auto w-full max-w-[1600px]">
         {loading ? (
-          <div className="max-w-4xl mx-auto rounded-3xl bg-slate-50 border border-slate-200 p-12 text-center text-sm font-semibold text-slate-600">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-white/70 bg-white/80 p-12 text-center text-sm font-semibold text-slate-600 shadow-sm backdrop-blur">
             Loading watch stream...
           </div>
         ) : errorMsg || !item ? (
-          <div className="max-w-3xl mx-auto rounded-3xl bg-white border border-slate-200 p-12 text-center space-y-4 shadow-sm">
+          <div className="mx-auto max-w-3xl space-y-4 rounded-3xl border border-white/70 bg-white/85 p-12 text-center shadow-[0_40px_90px_-60px_rgba(30,27,105,0.6)] backdrop-blur">
             <AlertCircle size={40} className="mx-auto text-rose-500" />
             <h1 className="text-xl font-extrabold text-slate-900">Shared Watch Link Not Found</h1>
             <p className="text-xs sm:text-sm text-slate-600">{errorMsg}</p>
             <Link
               to="/"
-              className="inline-block rounded-xl bg-blue-600 hover:bg-blue-700 px-6 py-2.5 text-xs font-extrabold text-white"
+              className="ud-btn-primary !px-6 !py-2.5 !text-xs"
             >
               Paste &amp; Share Your Own Video Link
             </Link>
@@ -49,7 +52,7 @@ export function ViralSharePage() {
         ) : (
           <div className="max-w-5xl mx-auto space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-bold text-emerald-700">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-extrabold text-emerald-700 shadow-sm">
                 <Sparkles size={13} /> Direct Browser Stream · Zero Account Needed
               </span>
               <span className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700">
@@ -66,7 +69,7 @@ export function ViralSharePage() {
               autoPlay={true}
             />
 
-            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-col justify-between gap-4 rounded-2xl border border-slate-200 bg-white/85 p-5 shadow-sm backdrop-blur sm:flex-row sm:items-center">
               <div>
                 <h1 className="text-lg font-extrabold text-slate-900">{item.title}</h1>
                 <p className="text-xs text-slate-600 mt-1">
@@ -90,13 +93,13 @@ export function ViralSharePage() {
                       sourceUrl: item.url,
                     })
                   }
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-4 py-2.5 text-xs font-extrabold text-white"
+                  className="ud-btn-primary !px-4 !py-2.5 !text-xs"
                 >
                   <Download size={15} /> Download Full MP4
                 </button>
                 <Link
                   to="/"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 px-4 py-2.5 text-xs font-extrabold text-white"
+                  className="ud-btn-ghost !px-4 !py-2.5 !text-xs"
                 >
                   Paste Another Link →
                 </Link>
@@ -106,6 +109,7 @@ export function ViralSharePage() {
             <NativeSponsorBanner />
           </div>
         )}
+        </div>
       </main>
       <Footer />
     </div>

@@ -2,29 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================================
+   UltraDownloader V12 · GLOBAL SHELL
+   ========================================================================== */
+
 @layer base {
   html {
     background-color: #ffffff;
-    color: #0f172a;
+    color: var(--ink);
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
     background-color: #ffffff;
-    color: #0f172a;
+    color: var(--ink);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  ::selection {
+    background: rgba(99, 102, 241, 0.24);
+    color: #1e1b4b;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.022em;
   }
 }
 
+/* ---------------------------------------------------------------- components */
 .ud-card {
-  @apply bg-white border border-slate-200/90 rounded-2xl shadow-sm;
+  @apply rounded-2xl border border-slate-200/90 bg-white shadow-sm;
 }
 
 .ud-card-interactive {
-  @apply transition-all duration-150 hover:border-blue-400 hover:shadow-md;
+  @apply transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-lg;
 }
 
 .ud-text-primary {
@@ -39,20 +65,123 @@
   @apply text-slate-500;
 }
 
-/* Round-10 admin ads form inputs */
+/* Colourful pill / chip */
+.ud-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 9999px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  background: linear-gradient(120deg, rgba(238, 242, 255, 0.95), rgba(236, 254, 255, 0.9));
+  color: #3730a3;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.ud-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px -12px rgba(67, 56, 202, 0.7);
+}
+
+/* Primary gradient button */
+.ud-btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 14px;
+  padding: 12px 22px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  background-image: var(--grad-brand);
+  background-size: 200% 200%;
+  box-shadow: 0 16px 32px -18px rgba(79, 70, 229, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background-position 0.5s ease;
+  overflow: hidden;
+}
+.ud-btn-primary:hover {
+  transform: translateY(-1px);
+  background-position: 100% 50%;
+  box-shadow: 0 22px 44px -18px rgba(79, 70, 229, 0.95);
+}
+.ud-btn-primary:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Soft white / outline button */
+.ud-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 14px;
+  padding: 11px 18px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #1e293b;
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+.ud-btn-ghost:hover {
+  transform: translateY(-1px);
+  border-color: #a5b4fc;
+  box-shadow: 0 12px 26px -18px rgba(79, 70, 229, 0.8);
+}
+
+/* Section shell */
+.ud-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Admin inputs (dark console) */
 .admin-input {
   width: 100%;
-  border-radius: 0.75rem;
-  background: #080c15;
-  border: 1px solid #1e293b;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.75rem;
-  color: #fff;
+  border-radius: 12px;
+  background: rgba(10, 16, 32, 0.85);
+  border: 1px solid rgba(120, 138, 200, 0.2);
+  padding: 9px 12px;
+  font-size: 12px;
+  color: #eef2ff;
   outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 .admin-input:focus {
-  border-color: #10b981;
+  border-color: rgba(56, 189, 248, 0.75);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
 }
 .admin-input::placeholder {
-  color: #475569;
+  color: #5b6788;
+}
+
+/* Custom scrollbars for long panels */
+.ud-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
+}
+.ud-scroll::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.ud-scroll::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 999px;
+}
+.ud-scroll-dark {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.35) transparent;
+}
+.ud-scroll-dark::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.ud-scroll-dark::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.32);
+  border-radius: 999px;
 }

@@ -49,50 +49,50 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
     <div className="space-y-6">
       {/* TOP 4 REAL SQL KPI STAT CARDS (ZERO FAKE NUMBERS!) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <div className="flex items-center justify-between text-xs font-bold text-slate-400">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <div className="flex items-center justify-between text-xs font-bold text-slate-300">
             <span>Recorded SQL Revenue</span>
             <DollarSign size={16} className="text-emerald-400" />
           </div>
           <p className="text-2xl font-extrabold text-emerald-400 mt-2">
             ${totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </p>
-          <p className="text-[11px] text-slate-400 mt-1">Sum of real INCOME entries in Smart Ledger</p>
+          <p className="text-[11px] text-slate-300 mt-1">Sum of real INCOME entries in Smart Ledger</p>
         </div>
 
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <div className="flex items-center justify-between text-xs font-bold text-slate-400">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <div className="flex items-center justify-between text-xs font-bold text-slate-300">
             <span>Recorded Infra Spend</span>
             <Server size={16} className="text-amber-400" />
           </div>
           <p className="text-2xl font-extrabold text-amber-300 mt-2">
             ${totalExpenses.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </p>
-          <p className="text-[11px] text-slate-400 mt-1">Sum of real EXPENSE entries in Smart Ledger</p>
+          <p className="text-[11px] text-slate-300 mt-1">Sum of real EXPENSE entries in Smart Ledger</p>
         </div>
 
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <div className="flex items-center justify-between text-xs font-bold text-slate-400">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <div className="flex items-center justify-between text-xs font-bold text-slate-300">
             <span>Net SQL Profit</span>
             <TrendingUp size={16} className="text-sky-400" />
           </div>
           <p className={`text-2xl font-extrabold mt-2 ${netProfit >= 0 ? 'text-sky-400' : 'text-rose-400'}`}>
             ${netProfit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </p>
-          <p className="text-[11px] text-slate-400 mt-1">
+          <p className="text-[11px] text-slate-300 mt-1">
             {overview?.roas !== null && overview?.roas !== undefined
               ? `Live ROAS: ${overview.roas}x`
               : 'Record entries in Smart Ledger to calculate ROAS'}
           </p>
         </div>
 
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <div className="flex items-center justify-between text-xs font-bold text-slate-400">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <div className="flex items-center justify-between text-xs font-bold text-slate-300">
             <span>Live Engine Telemetry</span>
             <Activity size={16} className="text-violet-400" />
           </div>
           <p className="text-2xl font-extrabold text-white mt-2">
-            {totalAnalyses} <span className="text-xs font-semibold text-slate-400">extractions</span>
+            {totalAnalyses} <span className="text-xs font-semibold text-slate-300">extractions</span>
           </p>
           <p className="text-[11px] text-emerald-400 font-semibold mt-1">
             {totalVisits} visits · {totalDownloads} downloads · {overview?.savedVaultCount || 0} Vault
@@ -102,19 +102,19 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
 
       {/* CHARTS ROW */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        <div className="lg:col-span-8 rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
+        <div className="lg:col-span-8 rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
           <h3 className="text-sm font-extrabold text-white">Real SQL Revenue vs. Infra Cost Timeline</h3>
-          <p className="text-xs text-slate-400 mb-4">
+          <p className="text-xs text-slate-300 mb-4">
             Plotted 100% live from real entries stored in SQL <code className="text-sky-300">finance_ledger</code>
           </p>
 
           {timelineData.length === 0 ? (
-            <div className="h-56 rounded-xl border border-dashed border-slate-700 grid place-items-center p-6 text-center">
+            <div className="h-56 rounded-xl border border-dashed border-white/15 grid place-items-center p-6 text-center">
               <div className="space-y-1">
-                <p className="text-xs sm:text-sm font-bold text-slate-200">
+                <p className="text-xs sm:text-sm font-bold text-slate-100">
                   $0.00 Recorded in SQL Ledger Yet (Zero Fake Chart Numbers)
                 </p>
-                <p className="text-xs text-slate-400 max-w-md">
+                <p className="text-xs text-slate-300 max-w-md">
                   Open the <strong className="text-sky-300">Smart Ledger</strong> tab and add real Income or Expense entries to plot your live Revenue vs. Cost graph automatically.
                 </p>
               </div>
@@ -165,10 +165,10 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
           )}
         </div>
 
-        <div className="lg:col-span-4 rounded-2xl bg-[#0D1320] border border-slate-800 p-5 flex flex-col justify-between">
+        <div className="lg:col-span-4 rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 flex flex-col justify-between">
           <div>
             <h3 className="text-sm font-extrabold text-white">Live 4-Stage Ad Waterfall</h3>
-            <p className="text-xs text-slate-400 mb-3">Real SQL tracked ad events</p>
+            <p className="text-xs text-slate-300 mb-3">Real SQL tracked ad events</p>
 
             {hasAdImpressions ? (
               <div className="h-44 w-full">
@@ -191,7 +191,7 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
                 </ResponsiveContainer>
               </div>
             ) : (
-              <div className="h-36 rounded-xl border border-dashed border-slate-700 grid place-items-center p-4 text-center text-xs text-slate-400 mb-3">
+              <div className="h-36 rounded-xl border border-dashed border-white/15 grid place-items-center p-4 text-center text-xs text-slate-300 mb-3">
                 0 ad impressions recorded yet. Enable ad zones in Ad Waterfall to start live tracking.
               </div>
             )}
@@ -212,14 +212,14 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
       </div>
 
       {/* INTERACTIVE YIELD CALCULATOR */}
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-4">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-4">
         <div className="flex items-center gap-2.5">
           <Calculator size={18} className="text-sky-400" />
           <div>
             <h3 className="text-sm font-extrabold text-white">
               Interactive Traffic & Ad Waterfall Yield Calculator
             </h3>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-300">
               Projection formula based on your target daily visitors, blended eCPM, and VPS bill
             </p>
           </div>
@@ -279,7 +279,7 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
             <p className="text-2xl font-black text-emerald-400 mt-0.5">
               ${simulatedStats.netTakeHome.toLocaleString()}/mo
             </p>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-300">
               {(simulatedStats.monthlyImpressions / 1000).toFixed(0)}k monthly impressions
             </p>
           </div>
@@ -288,38 +288,38 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
 
       {/* REAL SQL ORGANIC TRAFFIC FUNNEL */}
       {trafficFunnel && (
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-4">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-4">
           <div className="flex items-center gap-2">
             <Share2 size={17} className="text-emerald-400" />
             <div>
               <h3 className="text-sm font-extrabold text-white">Live SQL Traffic Funnel</h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-300">
                 Real recorded sessions across Home, <code>/tools/:slug</code>, and <code>/v/:shortCode</code>
               </p>
             </div>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-            <div className="rounded-xl bg-[#080C15] border border-slate-800 p-3.5">
-              <p className="text-[11px] text-slate-400">Total SQL Visits</p>
+            <div className="rounded-xl bg-[#080C15] border border-white/10 p-3.5">
+              <p className="text-[11px] text-slate-300">Total SQL Visits</p>
               <p className="text-xl font-extrabold text-white mt-1">
                 {Number(trafficFunnel.totalFreeVisits || 0).toLocaleString()}
               </p>
             </div>
-            <div className="rounded-xl bg-[#080C15] border border-slate-800 p-3.5">
-              <p className="text-[11px] text-slate-400">SEO Route Hits (/tools/*)</p>
+            <div className="rounded-xl bg-[#080C15] border border-white/10 p-3.5">
+              <p className="text-[11px] text-slate-300">SEO Route Hits (/tools/*)</p>
               <p className="text-xl font-extrabold text-sky-400 mt-1">
                 {Number(trafficFunnel.seoOrganic || 0).toLocaleString()}
               </p>
             </div>
-            <div className="rounded-xl bg-[#080C15] border border-slate-800 p-3.5">
-              <p className="text-[11px] text-slate-400">Shared Watch Views (/v/*)</p>
+            <div className="rounded-xl bg-[#080C15] border border-white/10 p-3.5">
+              <p className="text-[11px] text-slate-300">Shared Watch Views (/v/*)</p>
               <p className="text-xl font-extrabold text-emerald-400 mt-1">
                 {Number(trafficFunnel.viralWatchShares || 0).toLocaleString()}
               </p>
             </div>
-            <div className="rounded-xl bg-[#080C15] border border-slate-800 p-3.5">
-              <p className="text-[11px] text-slate-400">Direct App Sessions</p>
+            <div className="rounded-xl bg-[#080C15] border border-white/10 p-3.5">
+              <p className="text-[11px] text-slate-300">Direct App Sessions</p>
               <p className="text-xl font-extrabold text-amber-300 mt-1">
                 {Number(trafficFunnel.directBookmarks || 0).toLocaleString()}
               </p>
@@ -330,21 +330,21 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
 
       {/* REAL SQL CHANNEL BREAKDOWN + SYSTEM DIAGNOSTICS */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
           <h3 className="text-sm font-extrabold text-white mb-3">
             Live SQL Engine Activity Breakdown
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400">
+                <tr className="border-b border-white/10 text-slate-300">
                   <th className="py-2 pr-3">Module</th>
                   <th className="py-2 px-3">Events</th>
                   <th className="py-2 px-3">Downloads</th>
                   <th className="py-2 pl-3">Completed</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/70">
+              <tbody className="divide-y divide-white/10/70">
                 {channelData.map((row) => (
                   <tr key={row.channel}>
                     <td className="py-2.5 pr-3 font-bold text-white">{row.channel}</td>
@@ -362,7 +362,7 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
           </div>
         </div>
 
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-3">
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-3">
           <div className="flex items-center gap-2">
             <Sparkles size={16} className="text-violet-400" />
             <h3 className="text-sm font-extrabold text-white">Live System Diagnostics & Health</h3>
@@ -370,7 +370,7 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
           {recommendations.map((rec) => (
             <div
               key={rec.id}
-              className="rounded-xl bg-[#080C15] border border-slate-800 p-3.5 space-y-1"
+              className="rounded-xl bg-[#080C15] border border-white/10 p-3.5 space-y-1"
             >
               <div className="flex items-center justify-between gap-2">
                 <span className="text-xs font-extrabold text-white">{rec.title}</span>
@@ -378,7 +378,7 @@ export function ProfitDashboardTab({ overview, recommendations = [], trafficFunn
                   {rec.gainEstimate}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">{rec.description}</p>
+              <p className="text-xs text-slate-300 leading-relaxed">{rec.description}</p>
             </div>
           ))}
         </div>

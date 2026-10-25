@@ -70,33 +70,33 @@ export function FinanceLedgerTab({ entries = [], onUpdateEntries, showToast }) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <p className="text-xs font-bold text-slate-400">Total SQL Income</p>
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <p className="text-xs font-bold text-slate-300">Total SQL Income</p>
           <p className="text-2xl font-extrabold text-emerald-400 mt-2">
             +${totals.income.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </p>
         </div>
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <p className="text-xs font-bold text-slate-400">Total SQL Expenses</p>
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <p className="text-xs font-bold text-slate-300">Total SQL Expenses</p>
           <p className="text-2xl font-extrabold text-rose-400 mt-2">
             -${totals.expense.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </p>
         </div>
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <p className="text-xs font-bold text-slate-400">Net Cash Balance</p>
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <p className="text-xs font-bold text-slate-300">Net Cash Balance</p>
           <p className="text-2xl font-extrabold text-sky-400 mt-2">
             ${totals.net.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </p>
         </div>
       </div>
 
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-3">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-3">
         <h3 className="text-sm font-extrabold text-white">Record Real SQL Income / Expense Entry</h3>
         <form onSubmit={handleAddEntry} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2.5">
           <select
             value={type}
             onChange={(e) => setType(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3 py-2 text-xs text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3 py-2 text-xs text-white"
           >
             <option value="income">Income (+)</option>
             <option value="expense">Expense (-)</option>
@@ -107,7 +107,7 @@ export function FinanceLedgerTab({ entries = [], onUpdateEntries, showToast }) {
             placeholder="Category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3 py-2 text-xs text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3 py-2 text-xs text-white"
           />
           <input
             type="text"
@@ -115,7 +115,7 @@ export function FinanceLedgerTab({ entries = [], onUpdateEntries, showToast }) {
             placeholder="Website / Domain"
             value={website}
             onChange={(e) => setWebsite(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3 py-2 text-xs text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3 py-2 text-xs text-white"
           />
           <input
             type="number"
@@ -124,14 +124,14 @@ export function FinanceLedgerTab({ entries = [], onUpdateEntries, showToast }) {
             placeholder="Amount ($)"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3 py-2 text-xs text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3 py-2 text-xs text-white"
           />
           <input
             type="text"
             placeholder="Notes"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3 py-2 text-xs text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3 py-2 text-xs text-white"
           />
           <button
             type="submit"
@@ -142,7 +142,7 @@ export function FinanceLedgerTab({ entries = [], onUpdateEntries, showToast }) {
         </form>
       </div>
 
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-4">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-extrabold text-white">
             SQL Financial Ledger ({entries.length} Recorded Transactions)
@@ -151,21 +151,21 @@ export function FinanceLedgerTab({ entries = [], onUpdateEntries, showToast }) {
             type="button"
             disabled={entries.length === 0}
             onClick={handleExportCsv}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 px-3 py-1.5 text-xs font-bold text-white"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] hover:bg-slate-700 disabled:opacity-40 px-3 py-1.5 text-xs font-bold text-white"
           >
             <Download size={13} /> Export CSV
           </button>
         </div>
 
         {entries.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-slate-700 p-8 text-center text-xs text-slate-400">
+          <div className="rounded-xl border border-dashed border-white/15 p-8 text-center text-xs text-slate-300">
             0 dummy transactions in SQL. Record real payouts or server expenses above to track live net profit.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400">
+                <tr className="border-b border-white/10 text-slate-300">
                   <th className="py-2 pr-3">Date</th>
                   <th className="py-2 px-3">Type</th>
                   <th className="py-2 px-3">Category</th>
@@ -175,7 +175,7 @@ export function FinanceLedgerTab({ entries = [], onUpdateEntries, showToast }) {
                   <th className="py-2 pl-3">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/70">
+              <tbody className="divide-y divide-white/10/70">
                 {entries.map((row) => {
                   const rowType = row.type || row.entry_type;
                   return (
@@ -201,7 +201,7 @@ export function FinanceLedgerTab({ entries = [], onUpdateEntries, showToast }) {
                       >
                         {rowType === 'income' ? '+' : '-'}${Number(row.amount).toLocaleString()}
                       </td>
-                      <td className="py-2.5 px-3 text-slate-400">{row.notes || '—'}</td>
+                      <td className="py-2.5 px-3 text-slate-300">{row.notes || '—'}</td>
                       <td className="py-2.5 pl-3">
                         <button
                           type="button"

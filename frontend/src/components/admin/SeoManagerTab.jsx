@@ -51,33 +51,33 @@ export function SeoManagerTab({ keywords = [], onUpdateKeywords, showToast }) {
     <div className="space-y-6">
       {/* 100% REAL SQL KPI CARDS */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <p className="text-xs font-bold text-slate-400">Active /tools/:slug Routes</p>
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <p className="text-xs font-bold text-slate-300">Active /tools/:slug Routes</p>
           <p className="text-2xl font-extrabold text-white mt-2">{keywords.length}</p>
           <p className="text-[11px] text-emerald-400 mt-1">Auto-listed in live /sitemap.xml</p>
         </div>
 
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <p className="text-xs font-bold text-slate-400">Recorded SQL Impressions</p>
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <p className="text-xs font-bold text-slate-300">Recorded SQL Impressions</p>
           <p className="text-2xl font-extrabold text-sky-400 mt-2">{totals.impressions.toLocaleString()}</p>
-          <p className="text-[11px] text-slate-400 mt-1">Real visits across SEO landing routes</p>
+          <p className="text-[11px] text-slate-300 mt-1">Real visits across SEO landing routes</p>
         </div>
 
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <p className="text-xs font-bold text-slate-400">Recorded SQL Clicks</p>
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <p className="text-xs font-bold text-slate-300">Recorded SQL Clicks</p>
           <p className="text-2xl font-extrabold text-emerald-400 mt-2">{totals.clicks.toLocaleString()}</p>
-          <p className="text-[11px] text-slate-400 mt-1">Click Open Page below to test live count</p>
+          <p className="text-[11px] text-slate-300 mt-1">Click Open Page below to test live count</p>
         </div>
 
-        <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5">
-          <p className="text-xs font-bold text-slate-400">Measured CTR</p>
+        <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5">
+          <p className="text-xs font-bold text-slate-300">Measured CTR</p>
           <p className="text-2xl font-extrabold text-amber-300 mt-2">{totals.ctr}</p>
-          <p className="text-[11px] text-slate-400 mt-1">JSON-LD Rich Schema active</p>
+          <p className="text-[11px] text-slate-300 mt-1">JSON-LD Rich Schema active</p>
         </div>
       </div>
 
       {/* Add Route Form */}
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-3">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-3">
         <div className="flex items-center gap-2">
           <Globe size={17} className="text-sky-400" />
           <h3 className="text-sm font-extrabold text-white">
@@ -91,14 +91,14 @@ export function SeoManagerTab({ keywords = [], onUpdateKeywords, showToast }) {
             placeholder="Target keyword (e.g. YouTube Shorts HD Downloader)"
             value={newKeyword}
             onChange={(e) => setNewKeyword(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs sm:text-sm text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs sm:text-sm text-white"
           />
           <input
             type="text"
             placeholder="Optional custom URL slug (e.g. youtube-shorts-hd)"
             value={newSlug}
             onChange={(e) => setNewSlug(e.target.value)}
-            className="rounded-xl bg-[#080C15] border border-slate-800 px-3.5 py-2 text-xs sm:text-sm text-white"
+            className="rounded-xl bg-[#080C15] border border-white/10 px-3.5 py-2 text-xs sm:text-sm text-white"
           />
           <button
             type="submit"
@@ -110,7 +110,7 @@ export function SeoManagerTab({ keywords = [], onUpdateKeywords, showToast }) {
       </div>
 
       {/* Table */}
-      <div className="rounded-2xl bg-[#0D1320] border border-slate-800 p-5 space-y-4">
+      <div className="rounded-2xl bg-white/[0.035] backdrop-blur-xl border border-white/10 p-5 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="text-sm font-extrabold text-white">
             Live SQL Programmatic SEO Routes ({keywords.length})
@@ -119,7 +119,7 @@ export function SeoManagerTab({ keywords = [], onUpdateKeywords, showToast }) {
             href="/sitemap.xml"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-bold text-sky-300"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] hover:bg-slate-700 px-3 py-1.5 text-xs font-bold text-sky-300"
           >
             Inspect Live /sitemap.xml <ExternalLink size={12} />
           </a>
@@ -128,7 +128,7 @@ export function SeoManagerTab({ keywords = [], onUpdateKeywords, showToast }) {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-800 text-slate-400">
+              <tr className="border-b border-white/10 text-slate-300">
                 <th className="py-2 pr-3">Target Keyword</th>
                 <th className="py-2 px-3">Live Path</th>
                 <th className="py-2 px-3">Impressions</th>
@@ -136,7 +136,7 @@ export function SeoManagerTab({ keywords = [], onUpdateKeywords, showToast }) {
                 <th className="py-2 pl-3">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/70">
+            <tbody className="divide-y divide-white/10/70">
               {keywords.map((row) => (
                 <tr key={row.id || row.slug}>
                   <td className="py-2.5 pr-3 font-bold text-white">{row.keyword}</td>
@@ -151,7 +151,7 @@ export function SeoManagerTab({ keywords = [], onUpdateKeywords, showToast }) {
                     <Link
                       to={`/tools/${row.slug}`}
                       target="_blank"
-                      className="inline-flex items-center gap-1 rounded-lg bg-slate-800 hover:bg-slate-700 px-2.5 py-1 text-xs font-bold text-white"
+                      className="inline-flex items-center gap-1 rounded-lg bg-white/[0.06] hover:bg-slate-700 px-2.5 py-1 text-xs font-bold text-white"
                     >
                       Open Page <ExternalLink size={11} />
                     </Link>

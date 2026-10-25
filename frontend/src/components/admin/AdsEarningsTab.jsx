@@ -128,14 +128,14 @@ export function AdsEarningsTab({ showToast }) {
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
             <Radio size={18} className="text-emerald-400" /> Ads &amp; Earnings
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-300 mt-0.5">
             Real impressions and clicks are recorded from the public site. Nothing is simulated.
           </p>
         </div>
         <button
           type="button"
           onClick={load}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-[#0B1220] border border-slate-800 px-3 py-2 text-xs font-semibold text-slate-200 hover:border-slate-600"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 px-3 py-2 text-xs font-semibold text-slate-100 hover:border-slate-600"
         >
           {loading ? <Loader2 size={13} className="animate-spin" /> : <RefreshCw size={13} />}
           Refresh
@@ -145,16 +145,16 @@ export function AdsEarningsTab({ showToast }) {
       {/* Stat cards */}
       <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
         {statCards.map((card) => (
-          <div key={card.label} className="rounded-xl bg-[#0B1220] border border-slate-800 p-3.5">
+          <div key={card.label} className="rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 p-3.5">
             <card.icon size={15} className={card.tint} />
-            <p className="mt-2 text-[11px] text-slate-400">{card.label}</p>
+            <p className="mt-2 text-[11px] text-slate-300">{card.label}</p>
             <p className="text-base font-bold text-white">{card.value}</p>
           </div>
         ))}
       </div>
 
       {/* Earn readiness */}
-      <div className="rounded-xl bg-[#0B1220] border border-slate-800 p-4">
+      <div className="rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 p-4">
         <div className="flex items-center justify-between gap-3">
           <h3 className="text-sm font-bold text-white">Can this site earn yet?</h3>
           <span
@@ -171,33 +171,33 @@ export function AdsEarningsTab({ showToast }) {
           {(analytics?.readiness || []).map((rule) => (
             <div
               key={rule.key}
-              className="flex items-start gap-2 rounded-lg border border-slate-800 bg-[#070C15] px-2.5 py-2"
+              className="flex items-start gap-2 rounded-lg border border-white/10 bg-[#070C15] px-2.5 py-2"
             >
               {rule.pass ? (
                 <CheckCircle2 size={14} className="text-emerald-400 mt-0.5 shrink-0" />
               ) : (
-                <Circle size={14} className="text-slate-500 mt-0.5 shrink-0" />
+                <Circle size={14} className="text-slate-400 mt-0.5 shrink-0" />
               )}
               <div className="min-w-0">
-                <p className="text-[11px] font-semibold text-slate-200 leading-tight">{rule.label}</p>
-                <p className="text-[10px] text-slate-500">{rule.value}</p>
+                <p className="text-[11px] font-semibold text-slate-100 leading-tight">{rule.label}</p>
+                <p className="text-[10px] text-slate-400">{rule.value}</p>
               </div>
             </div>
           ))}
         </div>
-        <p className="mt-3 text-[11px] text-slate-500">
+        <p className="mt-3 text-[11px] text-slate-400">
           Traffic counts only when real visitors load the site from new IPs — the visitor ledger hashes every IP,
           so a new IP = a new visitor. Register users from the public site to grow the signed-users number.
         </p>
       </div>
 
       {/* Existing slots */}
-      <div className="rounded-xl bg-[#0B1220] border border-slate-800 overflow-hidden">
-        <div className="px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+      <div className="rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 overflow-hidden">
+        <div className="px-4 py-3 border-b border-white/10 flex items-center justify-between">
           <h3 className="text-sm font-bold text-white">Ad slots ({slots.length})</h3>
-          <span className="text-[11px] text-slate-500">Toggle a slot to publish it instantly</span>
+          <span className="text-[11px] text-slate-400">Toggle a slot to publish it instantly</span>
         </div>
-        <div className="divide-y divide-slate-800">
+        <div className="divide-y divide-white/10">
           {slots.map((slot) => (
             <div key={slot.id} className="px-4 py-3 flex flex-wrap items-center gap-3">
               <button
@@ -217,11 +217,11 @@ export function AdsEarningsTab({ showToast }) {
               </button>
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-bold text-white truncate">{slot.name}</p>
-                <p className="text-[11px] text-slate-500 truncate">
+                <p className="text-[11px] text-slate-400 truncate">
                   {slot.placement} · {slot.adType} · {slot.slotKey}
                 </p>
               </div>
-              <div className="flex items-center gap-3 text-[11px] text-slate-400">
+              <div className="flex items-center gap-3 text-[11px] text-slate-300">
                 <span>👁 {slot.impressions ?? 0}</span>
                 <span>🖱 {slot.clicks ?? 0}</span>
                 <span className="text-emerald-400">${Number(slot.revenueUsd || 0).toFixed(4)}</span>
@@ -236,13 +236,13 @@ export function AdsEarningsTab({ showToast }) {
             </div>
           ))}
           {!slots.length && !loading && (
-            <p className="px-4 py-6 text-center text-xs text-slate-500">No ad slots yet — create one below.</p>
+            <p className="px-4 py-6 text-center text-xs text-slate-400">No ad slots yet — create one below.</p>
           )}
         </div>
       </div>
 
       {/* Create slot */}
-      <div className="rounded-xl bg-[#0B1220] border border-slate-800 p-4">
+      <div className="rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 p-4">
         <h3 className="text-sm font-bold text-white flex items-center gap-2">
           <Plus size={15} className="text-emerald-400" /> New ad slot
         </h3>
@@ -360,7 +360,7 @@ export function AdsEarningsTab({ showToast }) {
 function Field({ label, children }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-[11px] font-semibold text-slate-400">{label}</span>
+      <span className="mb-1 block text-[11px] font-semibold text-slate-300">{label}</span>
       {children}
     </label>
   );
